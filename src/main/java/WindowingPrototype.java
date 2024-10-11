@@ -3,9 +3,14 @@ import javax.swing.*;
 public class WindowingPrototype {
 
     public static void main(String[] args) {
-        Component mainComponent = new Component();
+        Desktop desktop = new Desktop();
 
-        Surface surface = new Surface(1024, 768, mainComponent);
+        Window w1 = new Window("Program 1", new Position(100, 100, 640, 480));
+        Window w2 = new Window("Program 2", new Position(200, 200, 640, 480));
+        desktop.addWindow(w1);
+        desktop.addWindow(w2);
+
+        Surface surface = new Surface(1280, 768, desktop);
         SurfaceDisplay display = new SurfaceDisplay(surface);
     }
 }
