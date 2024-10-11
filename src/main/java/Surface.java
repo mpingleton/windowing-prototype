@@ -2,7 +2,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Surface {
-
+    // "Surface" is a raw bitmap that will be written to the video memory and displayed on the monitor.
     private int width, height;
     private BufferedImage image;
 
@@ -15,6 +15,14 @@ public class Surface {
         this.width = width;
         this.height = height;
         image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 
     public BufferedImage getImage() {
