@@ -21,41 +21,21 @@ public class Component {
         this.img = new BufferedImage(pos.getWidth(), pos.getHeight(), BufferedImage.TYPE_INT_RGB);
     }
 
-    // TODO
+    public void renderSubstrate() {}
+
+    public void render() {}
+
+    public void reposition(int x, int y) {
+        Position newPos = new Position(x, y, this.pos.getWidth(), this.pos.getHeight());
+        this.pos = newPos;
+    }
+
     public void resize(int width, int height) {
-    }
+        Position newPos = new Position(this.pos.getX(), this.pos.getY(), width, height);
+        this.pos = newPos;
 
-    public void renderSubstrate() {
-        for (int y = 0; y < pos.getHeight(); y++) {
-            for (int x = 0; x < pos.getWidth(); x++) {
-                int p = substrate.getRGB(x, y);
-
-                Color c = new Color(p);
-                int r = c.getRed() + 100;
-                int g = c.getGreen() + 100;
-                int b = c.getBlue() + 100;
-
-                Color c1 = new Color(r, g, b);
-                substrate.setRGB(x, y, c1.getRGB());
-            }
-        }
-    }
-
-    public void render() {
-        for (int x = 0; x < pos.getWidth(); x++) {
-            mask.setRGB(x, 0, Color.WHITE.getRGB());
-            mask.setRGB(x, pos.getHeight() - 1, Color.WHITE.getRGB());
-        }
-
-        for (int y = 0; y < pos.getHeight(); y++) {
-            mask.setRGB(0, y, Color.WHITE.getRGB());
-            mask.setRGB(pos.getWidth() - 1, y, Color.WHITE.getRGB());
-        }
-
-        for (int y = 0; y < pos.getHeight(); y++) {
-            for (int x = 0; x < pos.getWidth(); x++) {
-                img.setRGB(x, y, Color.GREEN.getRGB());
-            }
-        }
+        this.substrate = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        this.mask = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        this.img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
     }
 }

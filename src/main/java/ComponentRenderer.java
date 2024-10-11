@@ -11,6 +11,28 @@ public class ComponentRenderer {
         this.component = component;
     }
 
+    public void rerenderSubstrate() {
+        for (int y = 0; y < component.pos.getHeight(); y++) {
+            for (int x = 0; x < component.pos.getWidth(); x++) {
+                int p = image.getRGB(x + component.pos.getX(), y + component.pos.getY());
+                component.substrate.setRGB(x, y, p);
+            }
+        }
+
+        component.renderSubstrate();
+
+        for (int y = 0; y < component.pos.getHeight(); y++) {
+            for (int x = 0; x < component.pos.getWidth(); x++) {
+                int c = component.mask.getRGB(x, y);
+
+                if (Color.BLACK.getRGB() == c) {
+                    int p = component.substrate.getRGB(x, y);
+                    image.setRGB(x + component.pos.getX(), y + component.pos.getY(), p);
+                }
+            }
+        }
+    }
+
     public void render() {
         for (int y = 0; y < component.pos.getHeight(); y++) {
             for (int x = 0; x < component.pos.getWidth(); x++) {

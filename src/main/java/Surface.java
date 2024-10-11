@@ -6,22 +6,24 @@ public class Surface {
     // "Surface" is a raw bitmap that will be written to the video memory and displayed on the monitor.
     private int width, height;
     private BufferedImage image;
-    private ArrayList<Component> components;
-    private ArrayList<ComponentRenderer> renderers;
+    private Component component;
+    private ComponentRenderer renderer;
 
     public Surface() {
         this.width = 0;
         this.height = 0;
-        this.components = new ArrayList();
-        this.renderers = new ArrayList();
+        this.component = new Component();
     }
 
-    public Surface(int width, int height) {
+    public Surface(int width, int height, Component component) {
         this.width = width;
         this.height = height;
+        this.component = component;
+        this.component.reposition(0, 0);
+        this.component.resize(width, height);
+
         this.image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-        this.components = new ArrayList();
-        this.renderers = new ArrayList();
+        this.renderer = new ComponentRenderer(this.image, this.component);
     }
 
     public int getWidth() {
@@ -32,36 +34,31 @@ public class Surface {
         return height;
     }
 
-    public void addComponent(Component component) {
-        ComponentRenderer newRenderer = new ComponentRenderer(image, component);
-
-        this.renderers.add(newRenderer);
-        this.components.add(component);
-    }
-
     public BufferedImage getImage() {
         return image;
+    }
+
+    public Component getComponent() {
+        return component;
     }
 
     public void resize(int w, int h) {
         width = w;
         height = h;
         image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        component.resize(w, h);
     }
 
-    public void clear(int color) {
+    public void clear() {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                image.setRGB(x, y, color);
+                image.setRGB(x, y, Color.BLACK.getRGB());
             }
         }
     }
 
     public void render() {
-        clear(Color.DARK_GRAY.getRGB());
-
-        for (int i = 0; i < this.renderers.size(); i++) {
-            this.renderers.get(i).render();
-        }
+        clear();
+        renderer.render();
     }
 }

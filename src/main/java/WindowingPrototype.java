@@ -3,11 +3,9 @@ import javax.swing.*;
 public class WindowingPrototype {
 
     public static void main(String[] args) {
-        Component component = new Component(new Position(60, 10, 640, 480));
+        Component mainComponent = new Component();
 
-        Surface surface = new Surface(1024, 768);
-        surface.addComponent(component);
-
+        Surface surface = new Surface(1024, 768, mainComponent);
         SurfaceDisplay display = new SurfaceDisplay(surface);
     }
 }
