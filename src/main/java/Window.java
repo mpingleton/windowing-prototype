@@ -17,7 +17,7 @@ public class Window extends Component {
                     Color c = new Color(0, 0, 0);
                     substrate.setRGB(x, y, c.getRGB());
                 } else {
-                    Color cn = new Color(50, 50, 50);
+                    Color cn = new Color(60, 60, 60);
                     substrate.setRGB(x, y, cn.getRGB());
                 }
             }

@@ -7,16 +7,20 @@ public class Desktop extends Component {
     private BufferedImage backgroundImage;
     private ArrayList<Window> windows;
     private ArrayList<Integer> zOrder;
+    private ControlBar desktopControlBar;
 
     public Desktop() {
         super();
         windows = new ArrayList<>();
         zOrder = new ArrayList<>();
+        desktopControlBar = new ControlBar();
     }
 
     @Override
     public void resize(int width, int height) {
         super.resize(width, height);
+
+        desktopControlBar.resize(width, 25);
 
         // Redo the background image.  It will be a checkerboard pattern.
         backgroundImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -63,5 +67,8 @@ public class Desktop extends Component {
             ComponentRenderer renderer = new ComponentRenderer(img, window);
             renderer.render();
         }
+
+        ComponentRenderer controlBarRender = new ComponentRenderer(img, desktopControlBar);
+        controlBarRender.render();
     }
 }
