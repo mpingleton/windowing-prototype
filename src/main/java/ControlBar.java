@@ -50,6 +50,17 @@ public class ControlBar extends Component {
                 }
             }
         }
+
+        for (int i = 0; i < 10; i++) {
+            exitButton.mask.setRGB(i + 5, i + 6, Color.WHITE.getRGB());
+            exitButton.mask.setRGB(5 + (9 - i), i + 6, Color.WHITE.getRGB());
+        }
+
+        for (int x = 0; x < 6; x++) {
+            for (int y = 0; y < 6; y++) {
+                menuButton.mask.setRGB(x + 7, y + 9, Color.WHITE.getRGB());
+            }
+        }
     }
 
     @Override

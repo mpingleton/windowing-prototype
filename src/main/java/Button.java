@@ -16,6 +16,15 @@ public class Button extends Component {
     }
 
     @Override
+    public void render() {
+        for (int y = 0; y < pos.getHeight(); y++) {
+            for (int x = 0; x < pos.getWidth(); x++) {
+                img.setRGB(x, y, Color.LIGHT_GRAY.getRGB());
+            }
+        }
+    }
+
+    @Override
     public void renderSubstrate() {
         for (int y = 0; y < pos.getHeight(); y++) {
             for (int x = 0; x < pos.getWidth(); x++) {
