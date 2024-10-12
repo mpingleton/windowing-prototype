@@ -20,7 +20,7 @@ public class Desktop extends Component {
     public void resize(int width, int height) {
         super.resize(width, height);
 
-        desktopControlBar.resize(width, 25);
+        desktopControlBar.resize(width, 22);
 
         // Redo the background image.  It will be a checkerboard pattern.
         backgroundImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);

@@ -8,7 +8,7 @@ public class ApplicationWindow extends Window {
         super(title, position);
         controlBar = new ControlBar();
         controlBar.fullBorder = true;
-        controlBar.resize(position.getWidth(), 25);
+        controlBar.resize(position.getWidth(), 22);
     }
 
     @Override
@@ -26,6 +26,6 @@ public class ApplicationWindow extends Window {
     @Override
     public void resize(int width, int height) {
         super.resize(width, height);
-        controlBar.resize(width, 25);
+        controlBar.resize(width, 22);
     }
 }
