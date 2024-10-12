@@ -2,6 +2,9 @@ import java.awt.*;
 
 public class Button extends Component {
 
+    // TODO: Figure out how to change the state of the button and get it to display a different color or something.
+    // TODO: Figure out how to register a button click, and get that information to the application.
+
     public int border;
     public boolean topBorder, bottomBorder, leftBorder, rightBorder;
     Color backgroundColor;
